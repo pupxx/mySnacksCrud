@@ -1,0 +1,24 @@
+
+<h4><a href="/snacks">Return to All Snacks</a></h4>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Description</th>
+    <th>Rating</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>{{snack.name}}</td>
+    <td><img src="{{snack.img_url}}" alt=""></td>
+    <td>{{snack.review_description}}</td>
+    <td>{{snack.rating}}</td>
+    <td>
+      <form action="/snacks/{{snack.id}}?_method=DELETE" method="POST">
+        <input class = "btn btn-default btn-sm" type="submit" name="delete" value="Delete Snack">
+      </form>
+    </td>
+    <td><button class="btn btn-default btn-sm" type="button" name="button"><a href="/snacks/{{snack.id}}/edit">Edit</a></button></td>
+  </tr>
+</table>

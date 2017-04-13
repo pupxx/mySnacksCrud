@@ -1,0 +1,27 @@
+
+<!-- <h1>{{allSnacks.name}}</h1> -->
+<h4><a href="/snacks/new">Create New Snack</a></h4>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Description</th>
+    <th>Rating</th>
+    <th></th>
+    <th></th>
+  </tr>
+  {{#each allSnacks}}
+  <tr>
+    <td><a href="/snacks/{{this.id}}">{{this.name}}</a></td>
+    <td><img src="{{this.img_url}}" alt=""></td>
+    <td>{{this.review_description}}</td>
+    <td>{{this.rating}}</td>
+    <td>
+      <form action="/snacks/{{this.id}}?_method=DELETE" method="POST">
+        <input class = "btn btn-default btn-sm" type="submit" name="delete" value="Delete Snack">
+      </form>
+    </td>
+    <td><button class="btn btn-default btn-sm" type="button" name="button"><a href="/snacks/{{this.id}}/edit">Edit</a></button></td>
+  </tr>
+  {{/each}}
+</table>
