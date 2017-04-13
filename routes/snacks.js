@@ -14,6 +14,7 @@ router.get('/', function(req, res){
   });
 });
 
+//Go to Edit page
 router.get('/:id/edit', function(req, res){
   var id = req.params.id;
   knex('snacks').where('id', id).first().then((snack)=>{
@@ -23,6 +24,7 @@ router.get('/:id/edit', function(req, res){
   });
 });
 
+//Delete One
 router.delete('/:id', function(req, res){
   var id = req.params.id;
   knex('snacks').del().where('id', id).then(function(){
@@ -30,6 +32,7 @@ router.delete('/:id', function(req, res){
   });
 });
 
+//Go to Create new form
 router.get('/new', function(req, res){
   res.render('snacks/new');
 });
@@ -44,19 +47,21 @@ router.get('/:id', (req, res)=>{
   });
 });
 
+//Create One
 router.post('/', function(req, res){
   var snack = {
     name: req.body.name,
     img_url: req.body['img-url'],
     review_description: req.body['description'],
     rating: req.body.rating
-  }
+  };
   knex('snacks').insert(snack, '*').then(function(newSnack){
     let id = newSnack[0].id;
     res.redirect(`/snacks/${id}`)
   });
 });
 
+//Edit One
 router.put('/:id', function(req, res){
   id = req.params.id
   var snack = {
